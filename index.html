@@ -20,17 +20,25 @@
         width: 600px; height: 600px;
         background-color: lavender;
         display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        grid-template-rows: repeat(10, 1fr);
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr 1fr;
         grid-template-areas: 
+        "name1 name1 name1"
+        "name2 name2 name3"
+        "name2 name2 name3";
     }
     .container .item{
         background-color: lavenderblush;
         border: 1px solid #000;
     }
     .item:nth-child(1){
-        grid-column: 2/11;
-        grid-row: 2/11;
+        grid-area: name1;
+    }
+    .item:nth-child(2){
+        grid-area: name2;
+    }
+    .item:nth-child(3){
+        grid-area: name3;
     }
     
 
