@@ -5,53 +5,129 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>가이드</title>
+    <title>반응형</title>
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <style>
-    body, h1, h2, h3, p{margin: 0;}
-    img{width: 100%; object-fit: cover; display: block;}
+    *{margin: 0; padding: 0;}
+    ul{list-style: none;}
+    a{color: inherit; text-decoration: none;}
+    img{width: 100%; height: 100%; object-fit: cover; display: block;}
     
 
-    .container{
-        width: 600px; height: 600px;
-        background-color: lavender;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr 1fr;
-        grid-template-areas: 
-        "name1 name1 name1"
-        "name2 name2 name3"
-        "name2 name2 name3";
+    /* .wrap{
+        width: 1200px; 
+        margin-left: auto;
+
+    } */
+    
+    /* 크기와 위치(margin- : auto) 바꾸기 */
+    /* 메뉴 아코디언 */
+    /* 메뉴와 서브메뉴 호버시 하이라이트 */
+    /* 탭메뉴 */
+    /* F12 오류찾기 (탑버튼) */
+
+    
+    .room{
+        height: 70vh;
+        position: relative;
     }
-    .container .item{
-        background-color: lavenderblush;
-        border: 1px solid #000;
+    .room img{
+        width: 100%; height: 100%; object-fit: cover;
     }
-    .item:nth-child(1){
-        grid-area: name1;
+    .room .bg{
+        position: absolute; left: 0; top: 0;
+        width: 100%; height: 100%;
+        background: linear-gradient(to bottom, #000, #0000);
     }
-    .item:nth-child(2){
-        grid-area: name2;
+    .room .tap-menu{
+        position: absolute; top: 100px; left: 50%;
+        width: 90%; display: flex; justify-content: space-between;
+        color: #fff;
+        transform: translateX(-50%);
+        
     }
-    .item:nth-child(3){
-        grid-area: name3;
+    .room .tap-menu .menu{
+        width: calc((100% - 30px) / 4);
+        height: 40px;
+        border-top: 2px solid #fff;
+    }
+    .room .text-box{
+        position: absolute;
+        left: 5%; top: 50%;
+        transform: translateY(-50%);
+        color: #fff;
     }
     
+    .room .text-box p:nth-child(2){
+        font-size: 32px;
+    }
+    .room .text-box .text{
+        display: none;
+    }
+
+    .room .text-box .text.act{
+        display: block;
+    }
+
+
+    
+
 
 
 </style>
 
 <body>
     <div class="wrap">
-        <div class="container">
-            <div class="item">1</div>
-            <div class="item">2</div>
-            <div class="item">3</div>
-        </div>
+        <section class="room">
+            <img src="img/architecture-7757905_1280.jpg" alt="">
+            <div class="bg"></div>
+            <div class="tap-menu">
+                <div class="menu">메뉴1</div>
+                <div class="menu">메뉴2</div>
+                <div class="menu">메뉴3</div>
+                <div class="menu">메뉴4</div>
+            </div>
+            <div class="text-box">
+                <div class="text act">
+                    <p>ROOM</p>
+                    <p>메뉴1</p>
+                    <p>내용</p>
+                </div>
+                <div class="text">
+                    <p>ROOM</p>
+                    <p>메뉴2</p>
+                    <p>내용</p>
+                </div>
+                <div class="text">
+                    <p>ROOM</p>
+                    <p>메뉴3</p>
+                    <p>내용</p>
+                </div>
+                <div class="text">
+                    <p>ROOM</p>
+                    <p>메뉴4</p>
+                    <p>내용</p>
+                </div>
+            </div>
+               
+            </div>
+            
+        </section>
     </div>
+
+    <script>
+        $(function(){
+            $(".text").first().addClass("act");
+            $(".tap-menu .menu").click(function(){
+                $(".text").eq($(this).index()).addClass("act")
+                .siblings().removeClass("act");
+            });
+        });
+    </script>
+
 </body>
+
 </html>
